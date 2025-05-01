@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GuideOS Liquorix Installer
+Comment=Installiert oder deinstallieren des Liquorix-Kernel auf/von GuideOS
+Exec=/usr/bin/guideos-liquorix-installer.sh
+Icon=/usr/share/pixmaps/guideos-liquorix-installer.png
+Type=Application
+Categories=GuideOS;
+Terminal=false
+
