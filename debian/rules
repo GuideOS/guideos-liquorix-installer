@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+PACKAGE := guideos-liquorix-installer
+
+%:
+	dh $@
+
+override_dh_install:
+	install -d debian/$(PACKAGE)/usr/bin/
+	install -d debian/$(PACKAGE)/etc/
+	install -d debian/$(PACKAGE)/usr/share/doc/$(PACKAGE)
+	install -d debian/$(PACKAGE)/usr/share/icons/hicolor/256x256/apps/
+	install -d debian/$(PACKAGE)/usr/share/icons/hicolor/scalable/apps/
+	install -m 644 LICENSE debian/$(PACKAGE)/usr/share/doc/$(PACKAGE)/LICENSE
+	install -m 755 guideos-liquorix-installer debian/$(PACKAGE)/usr/bin/
+	install -m 644 guideos-liquorix-installer.png debian/$(PACKAGE)/usr/share/icons/hicolor/256x256/apps/guideos-liquorix-installer.png
+	install -m 644 guideos-liquorix-installer.svg debian/$(PACKAGE)/usr/share/icons/hicolor/scalable/apps/guideos-liquorix-installer.svg
+
+	./create_desktop_files.sh
+
+	dh_install

@@ -1,1 +1,1 @@
-# guideos-liquorix-installer
+guideos-liquorix-installer

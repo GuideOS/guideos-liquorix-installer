@@ -1,0 +1,16 @@
+Source: guideos-liquorix-installer
+Section: misc
+Priority: optional
+Maintainer: Actionschnitzel <actionschnitzel@guideos.de>
+Build-Depends: debhelper (>= 9),bash
+Standards-Version: 0.0.1
+Homepage: https://guideos.de
+
+Package: guideos-liquorix-installer
+Architecture: all
+Depends: ${misc:Depends}, bash, zenity
+Description: Automatically installs the liquorix kernel
+ This package automatically installs the liquorix kernel and
+ configures the system to use it. It also provides a GUI for
+ installing and removing the kernel, as well as for
+ configuring the system. 
