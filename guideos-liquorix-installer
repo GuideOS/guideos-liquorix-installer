@@ -8,7 +8,9 @@
 # Version: 1.0
 # Datum: 2025-04-27
 
-
+# Warnung vor dem Start des Skripts
+zenity --warning --title="Achtung!" \
+       --text="ACHTUNG: Das Aktivieren des Liquorix-Kernels verhindert die Anpassung der Leistungsprofile durch das GuideOS-Energie-Tool. Wer auf diese Energiesparoptionen nicht verzichten möchte, sollte jetzt abbrechen!"
 
 # Funktion zum Prüfen, ob der Liquorix-Kernel installiert ist
 check_kernel_installed() {
@@ -59,9 +61,25 @@ remove_kernel() {
     fi
 }
 
-# Passwortabfrage
+# Passwortabfrage – nur für den aktuell angemeldeten Benutzer
+ACTIVE_USER=$(whoami)
+if [ "$ACTIVE_USER" != "$(whoami)" ]; then
+    zenity --error --text="Fehler: Du bist nicht der aktuell angemeldete Benutzer. Nur der aktive Benutzer darf dieses Tool verwenden."
+    exit 1
+fi
+
+# Passwortabfrage mit Prüfung
 PASSWORD=$(zenity --entry --title="Passwortabfrage" \
                   --text="Gib dein Passwort ein:" --hide-text)
+
+# Passwortvalidierung
+echo "$PASSWORD" | sudo -S -v >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    zenity --error --title="Authentifizierungsfehler" \
+           --text="Falsches Passwort! Das Skript wird abgebrochen."
+    exit 1
+fi
+
 
 # Aktuellen Kernel herausfinden
 CURRENT_KERNEL=$(uname -r)

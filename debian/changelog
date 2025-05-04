@@ -1,3 +1,9 @@
+guideos-liquorix-installer (0.2) unstable; urgency=medium
+
+  * Added: Warning
+
+ -- Actionschnitzel <actionschnitzel@guideos.de>  Sun, 04 May 2025 17:39:31 +0200
+
 guideos-liquorix-installer (0.1) unstable; urgency=medium
 
   * Init Commit
